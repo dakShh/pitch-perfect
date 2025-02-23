@@ -14,6 +14,7 @@ import RecentOpen from './recent-open';
 
 // Constants
 import { data } from '@/lib/constants';
+import NavFooter from './nav-footer';
 
 type AppSidebarTypes = {
     recentProjects?: Project[];
@@ -21,8 +22,6 @@ type AppSidebarTypes = {
 } & React.ComponentProps<typeof Sidebar>;
 
 export function AppSidebar({ recentProjects, user, ...props }: AppSidebarTypes) {
-    console.log(user);
-
     return (
         <Sidebar collapsible="icon" className=" " {...props}>
             <SidebarHeader className="pt-3 px-3 pb-0">
@@ -34,7 +33,9 @@ export function AppSidebar({ recentProjects, user, ...props }: AppSidebarTypes) 
                 <NavMenu items={data.navMenu} />
                 <RecentOpen recentProjects={recentProjects || []} />
             </SidebarContent>
-            <SidebarFooter />
+            <SidebarFooter>
+                <NavFooter user={user} />
+            </SidebarFooter>
         </Sidebar>
     );
 }
