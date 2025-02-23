@@ -1,9 +1,13 @@
 import Header from '@/components/custom/header';
 import { getSession } from './api/auth/[...nextauth]/options';
+import { redirect } from 'next/navigation';
 
 export default async function Home() {
     const session = await getSession();
-    console.log('session from home: ', { session });
+
+    if (session) {
+        redirect('/dashboard');
+    }
     return (
         <main className="container mx-auto">
             <Header session={session} />
