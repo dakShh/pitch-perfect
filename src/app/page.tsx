@@ -3,7 +3,7 @@ import { getSession } from './api/auth/[...nextauth]/options';
 
 export default async function Home() {
     const session = await getSession();
-
+    console.log('session from home: ', { session });
     return (
         <main className="container mx-auto">
             <Header session={session} />
