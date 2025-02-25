@@ -36,10 +36,8 @@ export default function RecentOpen({ recentProjects }: RecentOpenTypes) {
             <SidebarGroupLabel className="font-medium text-sm">Recently Open </SidebarGroupLabel>
             <SidebarMenu>
                 {recentProjects.length === 0 ? (
-                    <SidebarMenuItem>
-                        <p className={cn('px-2 pt-4', 'text-xs text-muted-foreground')}>
-                            No Recent Projects
-                        </p>
+                    <SidebarMenuItem className={cn('px-2 pt-4', 'text-xs text-muted-foreground')}>
+                        No Recent Projects
                     </SidebarMenuItem>
                 ) : (
                     recentProjects?.map((project) => (

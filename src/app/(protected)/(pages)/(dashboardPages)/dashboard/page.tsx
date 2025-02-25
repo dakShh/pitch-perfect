@@ -1,9 +1,29 @@
 'use server';
+
+// Server Actions
 import { getAllProjects } from '@/actions/project';
 
-export default async function Dashboard() {
-    const projects = await getAllProjects();
-    console.log({ projects });
+// Components
+import NotFound from '@/components/custom/not-found';
+import Projects from '@/components/custom/projects';
 
-    return <div className="container mx-auto">dashboard</div>;
+export default async function Dashboard() {
+    const allProjects = await getAllProjects();
+
+    return (
+        <div className="w-full flex flex-col gap-6 relative p-4">
+            <div className="flex flex-col-reverse items-start w-full gap-6 sm:flex-row sm:justify-between sm:items-center">
+                <div className="flex flex-col item-start">
+                    <h1 className="text-2xl font-semibold backdrop-blur-lg">All Projects</h1>
+                    <p className="text-base font-normal">All of your work in one place</p>
+                </div>
+            </div>
+
+            {allProjects.data && allProjects.data.length > 0 ? (
+                <Projects projects={allProjects.data} />
+            ) : (
+                <NotFound />
+            )}
+        </div>
+    );
 }

@@ -6,8 +6,9 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 import { getServerSession } from 'next-auth';
 
 // Components
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/custom/app-sidebar';
+import UpperInfoBar from '@/components/custom/upper-info-bar';
 
 // Server Actions
 import { getRecentProjects } from '@/actions/project';
@@ -21,10 +22,14 @@ export default async function Layout({ children }: { children: React.ReactNode }
     return (
         <SidebarProvider>
             <AppSidebar user={session.user} recentProjects={recentProjects.data || []} />
-            <main>
-                {/* <SidebarTrigger /> */}
+            <SidebarInset>
+                <UpperInfoBar user={session.user} />
                 {children}
-            </main>
+            </SidebarInset>
+
+            {/* <main>
+                <SidebarTrigger />
+            </main> */}
         </SidebarProvider>
     );
 }

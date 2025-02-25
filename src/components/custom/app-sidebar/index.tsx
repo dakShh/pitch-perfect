@@ -7,6 +7,7 @@ import {
     SidebarContent,
     SidebarFooter,
     SidebarHeader,
+    SidebarMenu,
     SidebarMenuButton,
 } from '@/components/ui/sidebar';
 import NavMenu from './nav-menu';
@@ -23,11 +24,13 @@ type AppSidebarTypes = {
 
 export function AppSidebar({ recentProjects, user, ...props }: AppSidebarTypes) {
     return (
-        <Sidebar collapsible="icon" className=" " {...props}>
+        <Sidebar collapsible="offcanvas" className=" " {...props}>
             <SidebarHeader className="pt-3 px-3 pb-0">
-                <SidebarMenuButton size={'lg'}>
-                    <div className="text-xl font-extrabold">PitchPerfect</div>
-                </SidebarMenuButton>
+                <SidebarMenu>
+                    <SidebarMenuButton size={'lg'}>
+                        <div className="text-xl font-extrabold">PitchPerfect</div>
+                    </SidebarMenuButton>
+                </SidebarMenu>
             </SidebarHeader>
             <SidebarContent className="px-3 mt-10 gap-y-6">
                 <NavMenu items={data.navMenu} />
