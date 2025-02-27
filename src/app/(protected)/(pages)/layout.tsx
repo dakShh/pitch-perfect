@@ -24,7 +24,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
             <AppSidebar user={session.user} recentProjects={recentProjects.data || []} />
             <SidebarInset>
                 <UpperInfoBar user={session.user} />
-                {children}
+                <div className="p-4"> {children}</div>
             </SidebarInset>
 
             {/* <main>

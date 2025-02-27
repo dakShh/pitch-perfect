@@ -72,3 +72,25 @@ export const themes: Theme[] = [
         type: 'light',
     },
 ];
+
+export const CreatePageCard = [
+    {
+        title: 'Use a',
+        highlightedTest: 'Template',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'template',
+    },
+    {
+        title: 'Generate with',
+        highlightedTest: 'Creative AI',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'creative-ai',
+        highlight: true,
+    },
+    {
+        title: 'Start from',
+        highlightedTest: 'Scratch',
+        description: 'Write a prompt and leave everything else for us to handle',
+        type: 'create-scratch',
+    },
+];

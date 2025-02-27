@@ -1,3 +1,4 @@
+'use client';
 // db
 import { User } from '@prisma/client';
 
@@ -11,6 +12,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import UpperInfoSearchBar from './upper-info-searchbar';
 import NewProjectButton from './new-project-button';
 import { Upload } from 'lucide-react';
+import { signOut } from 'next-auth/react';
 
 interface UpperInfoBarTypes {
     user: User;
@@ -32,11 +34,14 @@ export default function UpperInfoBar({ user }: UpperInfoBarTypes) {
             <div className="w-full max-w-[95%] flex items-center justify-between gap-4 ">
                 <UpperInfoSearchBar />
                 <div className="flex items-center gap-x-2">
+                    <Button onClick={() => signOut()} variant={'destructive'}>
+                        Logout
+                    </Button>
                     <Button size={'lg'} variant={'outline'} className="hover:bg-background">
                         <Upload />
                         Upload
                     </Button>
-                    <NewProjectButton />
+                    <NewProjectButton user={user} />
                 </div>
             </div>
         </header>
